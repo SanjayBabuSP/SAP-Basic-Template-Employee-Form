@@ -1,0 +1,31 @@
+{
+  "emname": "Basic-Template-Employee-Form-emname",
+  "version": "1.1.0",
+  "namespace": "default/Basic-Template-Employee-Form/1",
+  "options": {
+    "management": true,
+    "messagingrest": true,
+    "messaging": true
+  },
+  "rules": {
+    "topicRules": {
+      "publishFilter": [
+        "${namespace}/*"
+      ],
+      "subscribeFilter": [
+        "*"
+      ]
+    },
+    "queueRules": {
+      "publishFilter": [
+        "${namespace}/*"
+      ],
+      "subscribeFilter": [
+        "${namespace}/*"
+      ]
+    }
+  },
+  "authorities": [
+    "$ACCEPT_GRANTED_AUTHORITIES"
+  ]
+}
