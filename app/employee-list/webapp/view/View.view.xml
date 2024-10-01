@@ -1,63 +1,18 @@
-<mvc:View xmlns:core="sap.ui.core" 
-          xmlns:mvc="sap.ui.core.mvc" 
-          xmlns="sap.m" 
-          controllerName="employeelist.controller.View" 
-          displayBlock="true">
-
-    <Page id="Main" title="{i18n>MainTitle}">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+          xmlns="sap.m"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          controllerName="employeelist.controller.View">
+          
+    <Page id="employeeDetailPage" title="{i18n>EmployeeDetails}">
         <content>
-            <Button id="btnShowForm" text="{i18n>ShowForm}" press="onToggleForm" />
-            <VBox id="formContainer" visible="false">
-                <HBox id="formColumnId-1HB">
-                    <VBox class="formColumn" id="formColumnId-1VB" width="50%">
-                        <Input id="inputFirstName" placeholder="{i18n>FirstNamePlaceholder}" width="50%"/>
-                        <Input id="inputAddress" placeholder="{i18n>AddressPlaceholder}" width="50%"/>
-                    </VBox>
-                    <VBox class="formColumn" id="formColumnId-2VB" width="50%">
-                        <Input id="inputLastName" placeholder="{i18n>LastNamePlaceholder}" width="50%"/>
-                        <DatePicker id="dateOfJoiningPicker" placeholder="{i18n>DateOfJoiningPlaceholder}" width="50%"/>
-                    </VBox>
-                </HBox>
-                <Button id="btnCreate" text="{i18n>Create}" press="onCreateEmployee" 
-                        width="auto" layoutData="sap.m.FlexItemData">
-                    <layoutData>
-                        <FlexItemData id="FlexItemData-1" growFactor="1" />
-                    </layoutData>
-                </Button>
+            <VBox id="viewVBox" class="employeeDetailsContainer">
+                <Input id="viewInputFirstName" value="{employees>FirstName}" placeholder="{i18n>FirstName}" />
+                <Input id="viewInputLastName" value="{employees>LastName}" placeholder="{i18n>LastName}" />
+                <DatePicker id="viewDateOfJoiningPicker" value="{employees>dateOfJoining}" placeholder="{i18n>DateOfJoining}" />
+                <Input id="viewInputAddress" value="{employees>Address}" placeholder="{i18n>Address}" />
             </VBox>
-            
-            <Button id="btnDelete" text="{i18n>Delete}" press="onDeleteEmployee" />
-
-            <Table id="employeeTable" items="{/Employees}" mode="MultiSelect">
-                <columns>
-                    <Column id="column2">
-                        <Text id="colEmployeeID" text="{i18n>EmployeeID}" />
-                    </Column>
-                    <Column id="column3">
-                        <Text id="colFirstName" text="{i18n>FirstName}" />
-                    </Column>
-                    <Column id="column4">
-                        <Text id="colLastName" text="{i18n>LastName}" />
-                    </Column>
-                    <Column id="column5">
-                        <Text id="colDateOfJoining" text="{i18n>DateOfJoining}" />
-                    </Column>
-                    <Column id="column6">
-                        <Text id="colAddress" text="{i18n>Address}" />
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem id="ColumnListItem" type="Active">
-                        <cells>
-                            <Text id="employeeID" text="{EmployeeID}" />
-                            <Text id="firstName" text="{FirstName}" />
-                            <Text id="lastName" text="{LastName}" />
-                            <Text id="dateOfJoining" text="{dateOfJoining}" />
-                            <Text id="address" text="{Address}" />
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
+            <Button id="btnSave" text="{i18n>Save}" press=".onSave" />
+            <Button id="btnBack" text="{i18n>Back}" press=".onBack" />
         </content>
     </Page>
 </mvc:View>

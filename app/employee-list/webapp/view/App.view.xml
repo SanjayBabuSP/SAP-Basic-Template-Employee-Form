@@ -1,8 +1,67 @@
-<mvc:View controllerName="employeelist.controller.App"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <App id="app">
-    </App>
-</mvc:View>
+<mvc:View xmlns:core="sap.ui.core" 
+          xmlns:mvc="sap.ui.core.mvc" 
+          xmlns="sap.m" 
+          controllerName="employeelist.controller.App" 
+          displayBlock="true">
 
+    <App id="app"> 
+        <pages>
+            <Page id="mainPage" title="{i18n>appTitle}">
+                <content>
+                    <Button id="btnShowForm" text="{i18n>ShowForm}" press="onToggleForm" />
+                    <VBox id="formContainer" visible="false">
+                        <HBox id="formColumnId-1HB">
+                            <VBox class="formColumn" id="formColumnId-1VB" width="50%">
+                                <Input id="inputFirstName" placeholder="{i18n>FirstNamePlaceholder}" width="50%"/>
+                                <Input id="inputAddress" placeholder="{i18n>AddressPlaceholder}" width="50%"/>
+                            </VBox>
+                            <VBox class="formColumn" id="formColumnId-2VB" width="50%">
+                                <Input id="inputLastName" placeholder="{i18n>LastNamePlaceholder}" width="50%"/>
+                                <DatePicker id="dateOfJoiningPicker" placeholder="{i18n>DateOfJoiningPlaceholder}" width="50%"/>
+                            </VBox>
+                        </HBox>
+                        <Button id="btnCreate" text="{i18n>Create}" press="onCreateEmployee" width="auto">
+                            <layoutData>
+                                <FlexItemData id="FlexItemData-1" growFactor="1" />
+                            </layoutData>
+                        </Button>
+                    </VBox>
+                    
+                    <Button id="btnDelete" text="{i18n>Delete}" press="onDeleteEmployee" />
+
+                    <Table id="employeeTable" items="{employees>/Employees}" mode="MultiSelect">
+                        <columns>
+                            <Column id="column2">
+                                <Text id="colEmployeeID" text="{i18n>EmployeeID}" />
+                            </Column>
+                            <Column id="column3">
+                                <Text id="colFirstName" text="{i18n>FirstName}" />
+                            </Column>
+                            <Column id="column4">
+                                <Text id="colLastName" text="{i18n>LastName}" />
+                            </Column>
+                            <Column id="column5">
+                                <Text id="colDateOfJoining" text="{i18n>DateOfJoining}" />
+                            </Column>
+                            <Column id="column6">
+                                <Text id="colAddress" text="{i18n>Address}" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id = "columnEmployeeTable" type="Navigation" press="onItemPress">
+                                <cells>
+                                    <Text id = "appEmployeeID" text="{employees>EmployeeID}" />
+                                    <Text id = "appEmployeeFirstName" text="{employees>FirstName}" />
+                                    <Text id = "appEmployeeLastName" text="{employees>LastName}" />
+                                    <Text id = "appDateOfJoining" text="{employees>dateOfJoining}" />
+                                    <Text id = "appAddress" text="{employees>Address}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </Page>
+        </pages>
+    </App>
+
+</mvc:View>

@@ -91,28 +91,38 @@
       },
       "routes": [
         {
-          "name": "RouteView",
-          "pattern": ":?query:",
-          "target": [
-            "TargetView"
-          ]
+          "name": "mainPage",
+          "pattern": "",
+          "target": "mainPage"
+        },
+        {
+            "pattern": "employeeDetails/{EmployeeID}",
+            "name": "employeeDetails",
+            "target": "employeeDetails"
         }
       ],
       "targets": {
-        "TargetView": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "View",
-          "viewName": "View"
-        }
+          "mainPage": {
+              "viewType": "XML",
+              "viewName": "App",
+              "viewId": "App",
+              "viewLevel": 1
+          },
+          "employeeDetails": {
+              "viewType": "XML",
+              "viewName": "View",
+              "viewId": "employeeDetailView",
+              "viewLevel": 2,
+              "controlId": "app",
+              "controlAggregation": "pages"
+          }
       }
     },
     "rootView": {
       "viewName": "employeelist.view.App",
       "type": "XML",
       "async": true,
-      "id": "App"
+      "id": "app"
     }
   }
 }
